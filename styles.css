@@ -1,0 +1,52 @@
+body{
+  padding: 0px;
+  margin: 0px;
+}
+.navbar{
+  display: flex;
+  flex-direction:row;
+  column-gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+  width: 1195.59px;
+  padding-left: 23px;
+  padding-right:23px;
+}
+.buy_now{
+  color: #666;
+}
+.nav-links{
+  display: flex;
+  list-style: none;
+  column-gap: 40px;
+}
+
+.nav-links a.active {
+  color:#1e2057 ;
+  font-weight: bold;
+}
+
+.nav-links li a {
+  text-decoration: none;
+}
+.nav-links li a:hover{
+  color:#1e2057 ;
+}
+
+.logo img{
+  max-height: 50px;
+}
+.nav-links a{
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #9d9fa6;
+  
+}
+header{
+  width: 100%;
+  height: 90px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
