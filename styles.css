@@ -290,3 +290,42 @@ header{
 .read-more-btn:hover {
   color: #1e2057;
 }
+
+.our-offer {
+  border-top: 2px solid #484a7d;
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #484a7d;
+  margin: 0;
+  display: flex;
+  column-gap: 40px;
+  padding-top: 40px;
+}
+.offer-col-text{
+  font-size: 13px;
+  color: #666;
+  margin: 25px 0 10px 0;
+  line-height: 21px;
+  font-weight: 400;
+  border-left: 1px solid  #4c4e7d;
+   padding-left: 35px;
+   margin-left: 5px;
+   
+   
+   
+}
+.offer-col-title {
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 32px;
+  color: #484a7d;
+  margin: 0 0 16px 0;
+  border-left: 6px solid  #484a7d;
+  padding-left: 35px;
+  
+}
+.offer-col {
+  row-gap: 40px;
+  column-gap: 40px;
+}
