@@ -329,3 +329,51 @@ header{
   row-gap: 40px;
   column-gap: 40px;
 }
+.Contact-text{
+
+  font-size: 38px;
+  font-weight: 900;
+  color: #484a7d;
+  margin: 0;
+}
+.contact-section{
+  background:#f0f1f2;
+  border-top: 1px solid #c7c7c7;
+  padding-bottom: 0px;
+}
+.offer-section{
+padding-bottom: 60px;
+}
+
+.contact-work{
+    display: flex;
+  align-items: center; 
+  justify-content: flex-end; 
+  height: 90px;
+ margin: 0 auto;
+  max-width: 1200px;
+  border-top: 1px solid #393b6a;
+}
+.contact-btn {
+  background: none;
+  border: none;
+  color: #393b6a;
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  padding: 0 32px;
+  height: 90px;
+  flex-grow: 1;
+  width: 100%;
+  justify-content: flex-end;
+}
+.contact-btn:hover {
+text-decoration: underline;
+}
+.contact-content-row{
+  padding-bottom: 30px;
+}
