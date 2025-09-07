@@ -79,8 +79,32 @@ body{
   display: flex;
   gap: 40px;
   border-top: 1px solid #484a7d;
-  padding-top: 40px;
+  padding: 40px 12px 0px 12px;
+
 }
+.work-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  border-top: 1px solid #484a7d;
+  padding: 40px 12px 0px 12px;
+}
+.work-col-title {
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #484a7d;
+  margin: 0 0 16px 0;
+  line-height: 1.1;
+}
+.work-col p {
+  font-size: 16px;
+  color: #666;
+  margin: 0 0 10px 0;
+  line-height: 28px;
+}
+
 .about-col {
   flex: 1;
   
