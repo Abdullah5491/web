@@ -1,6 +1,47 @@
+.work {
+  display: flex;
+  align-items: center; 
+  justify-content: flex-end; 
+  height: 90px;
+}
+
+.see-work-btn {
+  background: none;
+  border: none;
+  color: #393b6a;
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  padding: 0 32px;
+  height: 90px;
+  flex-grow: 1;
+  width: 100%;
+  justify-content: flex-end;
+}
+.see-work-btn:hover {
+  background-color:#F9EA00;
+}
+
+
+.see-work-icon {
+  display: inline-block;
+  vertical-align: middle;
+}
 body{
   padding: 0px;
   margin: 0px;
+}
+.global-h1{
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  font-size: 120px;
+  font-weight: 900;
+  line-height: 140px;
+  color:#1e2057 ;
+  max-width: 960px;
 }
 .navbar{
   display: flex;
@@ -8,9 +49,23 @@ body{
   column-gap: 20px;
   justify-content: space-between;
   align-items: center;
-  width: 1195.59px;
+  width: 1200px;
   padding-left: 23px;
   padding-right:23px;
+}
+.section{
+   background-color: #fff700;
+   width: 100%;
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+}
+.container-cl{
+    width: 1200px;
+   padding-left: 23px;
+   padding-right:23px;
+   padding-top: 50px;
+   
 }
 .buy_now{
   color: #666;
