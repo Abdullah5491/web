@@ -1,3 +1,104 @@
+body{
+  padding: 0px;
+  margin: 0px;
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+}
+
+/* About Section Styles */
+.about-section {
+  background: #fafafa;
+  padding: 60px 0 40px 0;
+  width: 100%;
+}
+.about-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+.about-oh {
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  font-size: 90px;
+  font-weight: 900;
+  color: #484a7d;
+  margin: 0 0 0 0;
+  line-height: 1;
+}
+.about-subtitle {
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #484a7d;
+  margin-bottom: 10px;
+  align-self: flex-end;
+
+}
+.about-more-btn {
+  margin-left: auto;
+  padding: 10px 20px;
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: #393b6a;
+  border: 2px solid #393b6a;
+  background: transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.about-more-btn:hover {
+  background: #393b6a;
+  color: #fff;
+}
+
+.about-content-row {
+  display: flex;
+  max-width: 1200px;
+  margin: 32px auto 0 auto;
+  gap: 15px;
+}
+.about-left {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  border-top: 3px solid #484a7d;
+  padding-top: 40px;
+}
+.about-lead {
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #484a7d;
+  margin: 0;
+}
+.about-right {
+  flex: 1;
+  display: flex;
+  gap: 40px;
+  border-top: 1px solid #484a7d;
+  padding-top: 40px;
+}
+.about-col {
+  flex: 1;
+  
+}
+.about-col-title {
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  font-weight: 900;
+  color: #484a7d;
+  margin: 0 0 16px 0;
+  line-height: 1.1;
+}
+.about-col p {
+  font-size: 13px;
+  color: #000000;
+  margin: 0 0 10px 0;
+  line-height: 19px;
+}
 .work {
   display: flex;
   align-items: center; 
@@ -31,10 +132,7 @@
   display: inline-block;
   vertical-align: middle;
 }
-body{
-  padding: 0px;
-  margin: 0px;
-}
+
 .global-h1{
   font-family: 'Raleway', Arial, Helvetica, sans-serif;
   font-size: 120px;
@@ -53,7 +151,7 @@ body{
   padding-left: 23px;
   padding-right:23px;
 }
-.section{
+.hero-section{
    background-color: #fff700;
    width: 100%;
    display: flex;
