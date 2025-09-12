@@ -171,7 +171,8 @@ body{
   column-gap: 20px;
   justify-content: space-between;
   align-items: center;
-  width: 1200px;
+  max-width: 1200px;
+  flex-grow: 1;
   padding-left: 23px;
   padding-right:23px;
 }
@@ -180,13 +181,14 @@ body{
    width: 100%;
    display: flex;
    align-items: center;
-   flex-direction: column;
+   justify-content: center;
 }
 .container-cl{
-    width: 1200px;
-   padding-left: 23px;
-   padding-right:23px;
+  max-width: 1200px;
+   padding-left: 33px;
+   padding-right:33px;
    padding-top: 50px;
+   flex-grow: 1;
    
 }
 .buy_now{
@@ -376,4 +378,17 @@ text-decoration: underline;
 }
 .contact-content-row{
   padding-bottom: 30px;
+}
+.symbols{
+  font-size: 26px;
+  font-weight: 400;
+  color: #6a6b81;
+  text-align: center;
+  padding: 10px 0;
+  background-color: #2d2e46;
+
+
+}
+.about-left image{
+  width: 100%;
 }
