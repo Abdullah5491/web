@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BeCopywriter - CRUD App</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Google Fonts: Raleway -->
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700;900&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+    <!-- CRUD Specific Assets -->
+    <link rel="stylesheet" href="./jqstyles.css" />
+    <script src="./jqcrud.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Navbar</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Dropdown
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="checkout.html">Checkout</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="crud.html">Crud APP</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">MY CV</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section (Simplified for CRUD Page) -->
+    <div class="hero-section" style="min-height: 200px; padding-top: 50px; padding-bottom: 50px;">
+        <div class="container-cl" style="padding-top: 0;">
+            <div class="hero">
+                <h1 class="global-h1" style="font-size: 60px; line-height: 1.2;">CRUD Application</h1>
+                <p style="font-family: 'Raleway'; font-size: 20px; color: #484a7d; margin-top: 10px;">
+                    Manage your posts dynamically with our API manager.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main CRUD Content -->
+    <div class="container my-5">
+        <!-- Actions Panel -->
+        <div class="d-flex justify-content-between align-items-center mb-4 p-3 bg-light rounded shadow-sm">
+            <h2 style="font-family: 'Raleway'; font-weight: 700; color: #393b6a; margin: 0;">Posts Manager</h2>
+            <button class="contact-btn" style="width: auto; height: auto; padding: 10px 20px;" data-bs-toggle="modal"
+                data-bs-target="#addModal">
+                <svg class="see-work-icon" width="20" height="20" viewBox="0 0 32 32" fill="none"
+                    xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
+                    <circle cx="16" cy="16" r="14.5" stroke="#393b6a" stroke-width="3" fill="none" />
+                    <path d="M10 16H22" stroke="#393b6a" stroke-width="3" stroke-linecap="round" />
+                    <path d="M16 10L22 16L16 22" stroke="#393b6a" stroke-width="3" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+                Add New Post
+            </button>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div id="loading" class="text-center my-5">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <p class="mt-2">Fetching Data...</p>
+        </div>
+
+        <!-- Alert Area -->
+        <div id="alertContainer"></div>
+
+        <!-- Posts List (Grid Layout) -->
+        <div id="postsList" class="row g-4">
+            <!-- Content will be loaded here via AJAX -->
+        </div>
+    </div>
+
+    <!-- Add Modal -->
+    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addModalLabel">Add New Post</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="addTitle" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="addTitle" placeholder="Enter post title" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="addBody" class="form-label">Body</label>
+                        <textarea class="form-control" id="addBody" rows="3" placeholder="Enter post content"
+                            required></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="savePostBtn"
+                        style="background-color: #393b6a; border-color: #393b6a;">Save Post</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">Edit Post</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="editId" />
+                    <div class="mb-3">
+                        <label for="editTitle" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="editTitle" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="editBody" class="form-label">Body</label>
+                        <textarea class="form-control" id="editBody" rows="3" required></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-warning" id="updatePostBtn">Update Post</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="symbols">
+            <p>@ # ^ $ % * | &</p>
+        </div>
+        <div class="top">
+            <div class="footer-col">
+                <h3>Useful links</h3>
+                <ul>
+                    <li><a href="#">Log in</a></li>
+                    <li><a href="#">Entries feed</a></li>
+                    <li><a href="#">Comments feed</a></li>
+                    <li><a href="#">WordPress.org</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Latest comments</h3>
+                <div class="comment-item">
+                    <span class="comment-date">December 31, 2014</span>
+                    <p><strong>Sara</strong> commented on <a href="#">Proin dui sodales imperdi sit</a></p>
+                </div>
+                <div class="comment-item">
+                    <span class="comment-date">December 31, 2014</span>
+                    <p><strong>Mark</strong> commented on <a href="#">Proin dui sodales imperdi sit</a></p>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>About us</h3>
+                <p>Nulla risus ante, luctus et placerat quis, efficitur nec nisl. Cras iaculis tristique.</p>
+                <p class="light">Etiam at nibh turpis! Vestibulum mattis risus eget dolor finibus, ut iuctus est congue.
+                    Ut sit amet interdum erat, quis malesuada lacus. Sed mauris diam, sodales a imperdiet ut.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Tags</h3>
+                <div class="tags">
+                    <p>Framework Grid Motion <span>Video Wordpress</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="bottom">
+            <p>&copy; 2025 Betheme by <a href="#">Muffin group</a> | All Rights Reserved | Powered by <a
+                    href="#">WordPress</a></p>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

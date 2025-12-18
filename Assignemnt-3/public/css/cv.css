@@ -1,0 +1,594 @@
+/* CV Hero Section */
+.cv-hero {
+    background-color: #fff700;
+  padding: 120px 20px 120px 20px;
+  text-align: center;
+ 
+}
+
+.cv-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.cv-title {
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  font-size: 120px;
+  font-weight: 900;
+  line-height: 140px;
+  color:#1e2057 ;
+  margin: 0 0 20px 0;
+  line-height: 1;
+}
+
+.cv-subtitle {
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #484a7d;
+  margin: 0;
+}
+
+/* CV Section */
+.cv-section {
+  background: #f8f9fa;
+  padding: 60px 20px;
+}
+
+/* Two Column Layout */
+.cv-layout {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+/* Sidebar (30% - Sticky) */
+.cv-sidebar {
+  width: 30%;
+  position: sticky;
+  top: 20px;
+  align-self: flex-start;
+}
+
+/* Content Area (70%) */
+.cv-content {
+  width: 70%;
+}
+
+/* Profile Card */
+.cv-profile-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.cv-profile-image {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #393b6a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cv-profile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cv-profile-name {
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #393b6a;
+  margin: 0 0 8px 0;
+}
+
+.cv-profile-title {
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #666;
+  margin: 0;
+}
+
+/* Sidebar Contact */
+.cv-sidebar-contact {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+}
+
+.cv-sidebar-heading {
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #393b6a;
+  margin: 0 0 20px 0;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #393b6a;
+}
+
+.cv-sidebar-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding: 12px;
+  border-radius: 6px;
+  transition: background 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.cv-sidebar-contact-item:last-child {
+  margin-bottom: 0;
+}
+
+.cv-sidebar-contact-item:hover {
+  background: #f8f9fa;
+  transform: translateX(5px);
+}
+
+.cv-sidebar-contact-item svg {
+  color: #393b6a;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.cv-sidebar-contact-item div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  overflow: hidden;
+}
+
+.cv-sidebar-contact-item strong {
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #393b6a;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cv-sidebar-contact-item span {
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: #666;
+  word-break: break-word;
+}
+
+/* CV Card */
+.cv-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cv-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(57, 59, 106, 0.2);
+}
+
+/* CV Card Header */
+.cv-card-header {
+  background: #393b6a;
+  padding: 25px 30px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.cv-card:hover .cv-card-header {
+  background: #fff700;
+}
+
+.cv-icon {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+}
+
+.cv-card:hover .cv-icon {
+  color: #1e2057;
+}
+
+.cv-card-header h2 {
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.cv-card:hover .cv-card-header h2 {
+  color: #1e2057;
+}
+
+/* CV Card Body - Hidden by default, revealed on hover */
+.cv-card-body {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  padding: 0 30px;
+  transition: max-height 0.5s ease, opacity 0.4s ease, padding 0.5s ease;
+}
+
+.cv-card:hover .cv-card-body {
+  max-height: 2000px;
+  opacity: 1;
+  padding: 30px;
+}
+
+/* Personal Information Grid */
+.cv-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.cv-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.cv-info-item strong {
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #393b6a;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cv-info-item span {
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #666;
+}
+
+/* Timeline Items (Education) */
+.cv-timeline-item {
+  border-left: 3px solid #393b6a;
+  padding-left: 25px;
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.cv-timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -7px;
+  top: 0;
+  width: 12px;
+  height: 12px;
+  background: #393b6a;
+  border-radius: 50%;
+}
+
+.cv-timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.cv-timeline-date {
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  background: #393b6a;
+  padding: 5px 12px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.cv-timeline-item h3 {
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #393b6a;
+  margin: 0 0 8px 0;
+}
+
+.cv-institution {
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #666;
+  margin: 0 0 8px 0;
+}
+
+.cv-description {
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Skills Grid */
+.cv-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.cv-skill-category h4 {
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #393b6a;
+  margin: 0 0 15px 0;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #393b6a;
+}
+
+.cv-skill-category ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cv-skill-category li {
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #666;
+  padding: 8px 0;
+  border-bottom: 1px solid #e0e0e0;
+  transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.cv-skill-category li:last-child {
+  border-bottom: none;
+}
+
+.cv-card:hover .cv-skill-category li:hover {
+  color: #393b6a;
+  padding-left: 10px;
+}
+
+/* Project Items */
+.cv-project-item {
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  border-left: 4px solid #393b6a;
+  transition: background 0.2s ease;
+}
+
+.cv-project-item:last-child {
+  margin-bottom: 0;
+}
+
+.cv-project-item:hover {
+  background: #e9ecef;
+}
+
+.cv-project-item h3 {
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #393b6a;
+  margin: 0 0 8px 0;
+}
+
+.cv-project-tech {
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #666;
+  margin: 0 0 12px 0;
+}
+
+.cv-project-desc {
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Contact Grid */
+.cv-contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+.cv-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.cv-contact-item:hover {
+  background: #e9ecef;
+  transform: translateX(5px);
+}
+
+.cv-contact-item svg {
+  color: #393b6a;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.cv-contact-item div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.cv-contact-item strong {
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #393b6a;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cv-contact-item span {
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #666;
+  word-break: break-all;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .cv-title {
+    font-size: 48px;
+  }
+
+  .cv-subtitle {
+    font-size: 16px;
+  }
+
+  .cv-hero {
+    padding: 60px 20px;
+  }
+
+  .cv-section {
+    padding: 40px 20px;
+  }
+
+  /* Stack layout on mobile */
+  .cv-layout {
+    flex-direction: column;
+  }
+
+  .cv-sidebar {
+    width: 100%;
+    position: static;
+  }
+
+  .cv-content {
+    width: 100%;
+  }
+
+  .cv-card-header {
+    padding: 20px;
+  }
+
+  .cv-card-header h2 {
+    font-size: 22px;
+  }
+
+  .cv-card:hover .cv-card-body {
+    padding: 20px;
+  }
+
+  .cv-info-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .cv-skills-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .cv-contact-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .cv-title {
+    font-size: 60px;
+  }
+
+  /* Stack layout on tablet */
+  .cv-layout {
+    flex-direction: column;
+  }
+
+  .cv-sidebar {
+    width: 100%;
+    position: static;
+    margin-bottom: 30px;
+  }
+
+  .cv-content {
+    width: 100%;
+  }
+
+  .cv-skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Print Styles */
+@media print {
+  /* Stack layout for printing */
+  .cv-layout {
+    flex-direction: column;
+  }
+
+  .cv-sidebar {
+    width: 100%;
+    position: static;
+    margin-bottom: 20px;
+  }
+
+  .cv-content {
+    width: 100%;
+  }
+
+  .cv-profile-card,
+  .cv-sidebar-contact {
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+
+  .cv-card-body {
+    max-height: none !important;
+    opacity: 1 !important;
+    padding: 30px !important;
+  }
+
+  .cv-card {
+    page-break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+
+  .cv-hero {
+    padding: 40px 20px;
+  }
+
+  .cv-print-btn {
+    display: none !important;
+  }
+}
+

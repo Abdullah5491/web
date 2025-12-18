@@ -1,0 +1,51 @@
+/* Custom styles to complement Bootstrap 5 */
+
+body {
+    background-color: #f8f9fa;
+}
+
+.card {
+    transition: transform 0.2s, box-shadow 0.2s;
+    height: 100%;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Updated for BeCopywriter Theme */
+.card-title {
+    color: #393b6a;
+    font-weight: 700;
+    font-family: 'Raleway', sans-serif;
+}
+
+.btn-group .btn {
+    border-radius: 4px;
+    margin: 0 2px;
+}
+
+#loading {
+    display: none;
+    /* Initially hidden, managed by JS */
+}
+
+/* Toast/Alert animations */
+.alert {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,0 +1,77 @@
+<%- include('partials/header') %>
+    <link rel="stylesheet" href="/css/products-styles.css" />
+
+    <div class="hero-section">
+        <div class="container-cl about-hero-padding">
+            <div class="hero">
+                <h1 class="global-h1">
+                    <%= product.name %>
+                </h1>
+            </div>
+        </div>
+    </div>
+
+    <section class="section-white product-details-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <div class="product-details-image-wrapper">
+                        <img src="<%= product.image || '/images/home_copywriter_pic1.png' %>" alt="<%= product.name %>"
+                            class="img-fluid w-100 product-details-image">
+                    </div>
+                </div>
+                <div class="col-md-6 ps-md-5">
+                    <span class="badge mb-3 product-details-badge">
+                        <%= product.category %>
+                    </span>
+                    <h2 class="product-details-title">
+                        <%= product.name %>
+                    </h2>
+                    <h3 class="product-details-price">$<%= product.price %>
+                    </h3>
+                    <p class="text-muted mb-4 product-details-description">
+                        <%= product.description %>
+                    </p>
+
+                    <div class="d-flex gap-3 product-details-actions">
+                        <button class="contact-btn add-to-cart-btn-single" data-id="<%= product._id %>"
+                            data-name="<%= product.name %>" data-price="<%= product.price %>">Add to Cart</button>
+                        <a href="/products" class="btn btn-outline-secondary d-flex align-items-center">Back to
+                            Products</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.querySelector('.add-to-cart-btn-single');
+            if (btn) {
+                btn.addEventListener('click', function () {
+                    const id = this.dataset.id;
+                    const name = this.dataset.name;
+                    const price = this.dataset.price;
+
+                    // Retrieve existing cart or initialize empty
+                    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+                    // Check if item already exists
+                    const existingItem = cart.find(item => item.id === id);
+                    if (existingItem) {
+                        existingItem.quantity += 1;
+                    } else {
+                        cart.push({ id, name, price, quantity: 1 });
+                    }
+
+                    // Save back to storage
+                    localStorage.setItem('cart', JSON.stringify(cart));
+
+                    // Feedback
+                    alert(name + ' added to cart!');
+                });
+            }
+        });
+    </script>
+
+    <%- include('partials/footer') %>

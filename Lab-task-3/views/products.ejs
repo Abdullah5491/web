@@ -1,0 +1,151 @@
+<%- include('partials/header') %>
+  <link rel="stylesheet" href="/css/products-styles.css" />
+
+  <div class="hero-section">
+    <div class="container-cl about-hero-padding">
+      <div class="hero">
+        <h1 class="global-h1">Our Products</h1>
+      </div>
+    </div>
+  </div>
+
+  <section class="section-white products-section">
+    <div class="row">
+      <!-- Sidebar -->
+      <div class="col-lg-3 mb-5">
+        <div class="card p-4 border-0 shadow-sm products-sidebar">
+          <h5 class="mb-4 filter-title">
+            Filters</h5>
+          <form action="/products" method="GET">
+            <div class="mb-4">
+              <label class="form-label fw-bold small text-uppercase text-muted">Search</label>
+              <div class="input-group">
+                <span class="input-group-text bg-white border-end-0"><i class="fas fa-search text-muted"></i></span>
+                <input type="text" name="search" class="form-control border-start-0 ps-0" placeholder="Keyword..."
+                  value="<%= search %>">
+              </div>
+            </div>
+            <div class="mb-4">
+              <label class="form-label fw-bold small text-uppercase text-muted">Category</label>
+              <select name="category" class="form-select">
+                <option value="">All Categories</option>
+                <% categories.forEach(cat=> { %>
+                  <option value="<%= cat %>" <%=selectedCategory===cat ? 'selected' : '' %>><%= cat %>
+                  </option>
+                  <% }) %>
+              </select>
+            </div>
+            <button type="submit" class="contact-btn filter-btn">Apply Filters</button>
+            <% if(selectedCategory || search) { %>
+              <a href="/products" class="btn btn-outline-secondary w-100 mt-2 btn-sm">Clear All</a>
+              <% } %>
+          </form>
+        </div>
+      </div>
+
+      <!-- Product Grid -->
+      <div class="col-lg-9">
+        <div class="row g-4">
+          <% if(products.length> 0) { %>
+            <% products.forEach(product=> { %>
+              <div class="col-md-6 col-lg-4">
+                <div class="card h-100 border-0 shadow-sm product-card">
+                  <div class="product-card-image">
+                    <img src="<%= product.image || '/images/home_copywriter_pic1.png' %>" class="card-img-top"
+                      alt="<%= product.name %>">
+                  </div>
+                  <div class="card-body d-flex flex-column p-4">
+                    <div class="mb-2">
+                      <span class="badge rounded-pill fw-normal product-category-badge">
+                        <%= product.category %>
+                      </span>
+                    </div>
+                    <h5 class="card-title mb-2 product-card-title">
+                      <%= product.name %>
+                    </h5>
+                    <p class="card-text text-muted small flex-grow-1 product-card-description">
+                      <%= product.description %>
+                    </p>
+                    <div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top">
+                      <span class="h5 mb-0 product-price">$<%= product.price %></span>
+                      <div class="d-flex gap-2 product-card-actions">
+                        <a href="/product/<%= product._id %>" class="contact-btn">View</a>
+                        <button class="contact-btn add-to-cart-btn" data-id="<%= product._id %>"
+                          data-name="<%= product.name %>" data-price="<%= product.price %>">Add
+                          to Cart</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <% }) %>
+                <% } else { %>
+                  <div class="col-12 text-center py-5">
+                    <div class="py-5 products-empty-state">
+                      <h3>No products found</h3>
+                      <p class="text-muted">Try adjusting your search or filters.</p>
+                      <a href="/products" class="contact-btn">View All Products</a>
+                    </div>
+                  </div>
+                  <% } %>
+        </div>
+
+        <!-- Pagination -->
+        <% if(totalPages> 1) { %>
+          <nav aria-label="Page navigation" class="mt-5">
+            <ul class="pagination justify-content-center products-pagination">
+              <li class="page-item <%= currentPage === 1 ? 'disabled' : '' %>">
+                <a class="page-link border-0 shadow-sm mx-1 rounded-circle d-flex align-items-center justify-content-center"
+                  href="/products?page=<%= currentPage - 1 %>&category=<%= selectedCategory %>&search=<%= search %>">&laquo;</a>
+              </li>
+
+              <% for(let i=1; i <=totalPages; i++) { %>
+                <li class="page-item">
+                  <a class="page-link border-0 shadow-sm mx-1 rounded-circle d-flex align-items-center justify-content-center <%= currentPage === i ? 'active' : '' %>"
+                    href="/products?page=<%= i %>&category=<%= selectedCategory %>&search=<%= search %>">
+                    <%= i %>
+                  </a>
+                </li>
+                <% } %>
+
+                  <li class="page-item <%= currentPage === totalPages ? 'disabled' : '' %>">
+                    <a class="page-link border-0 shadow-sm mx-1 rounded-circle d-flex align-items-center justify-content-center"
+                      href="/products?page=<%= currentPage + 1 %>&category=<%= selectedCategory %>&search=<%= search %>">&raquo;</a>
+                  </li>
+            </ul>
+          </nav>
+          <% } %>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+        button.addEventListener('click', function () {
+          const id = this.dataset.id;
+          const name = this.dataset.name;
+          const price = this.dataset.price;
+
+          // Retrieve existing cart or initialize empty
+          let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+          // Check if item already exists
+          const existingItem = cart.find(item => item.id === id);
+          if (existingItem) {
+            existingItem.quantity += 1;
+          } else {
+            cart.push({ id, name, price, quantity: 1 });
+          }
+
+          // Save back to storage
+          localStorage.setItem('cart', JSON.stringify(cart));
+
+          // Feedback
+          alert(name + ' added to cart!');
+        });
+      });
+    });
+  </script>
+
+  <%- include('partials/footer') %>
