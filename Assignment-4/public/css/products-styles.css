@@ -1,0 +1,177 @@
+/* Products Page Styles - BeCopywriter Theme */
+
+/* Section Padding */
+.products-section {
+    padding: 60px 50px;
+}
+
+/* Sidebar Filters */
+.products-sidebar {
+    background: #fafafa;
+    position: sticky;
+    top: 20px;
+}
+
+.products-sidebar .filter-title {
+    color: #484a7d;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    border-bottom: 2px solid #484a7d;
+    padding-bottom: 10px;
+}
+
+.products-sidebar .filter-btn {
+    width: 100%;
+    border: none;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+/* Product Cards */
+.product-card {
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+.product-card-image {
+    height: 220px;
+    overflow: hidden;
+    background: #e9ecef;
+    position: relative;
+}
+
+.product-card-image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-card-image img {
+    transform: scale(1.05);
+}
+
+.product-category-badge {
+    background-color: #ebecf0;
+    color: #484a7d;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+}
+
+.product-card-title {
+    color: #484a7d;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.product-card-description {
+    line-height: 1.6;
+}
+
+.product-price {
+    color: #393b6a;
+    font-weight: 700;
+}
+
+.product-card-actions .contact-btn {
+    padding: 8px 15px;
+    font-size: 11px;
+    height: auto;
+    min-width: auto;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.product-card-actions button.contact-btn {
+    border: none;
+    cursor: pointer;
+}
+
+/* Empty State */
+.products-empty-state {
+    background: #fafafa;
+    border-radius: 10px;
+}
+
+.products-empty-state h3 {
+    color: #484a7d;
+}
+
+.products-empty-state .contact-btn {
+    display: inline-flex;
+    height: auto;
+    padding: 10px 30px;
+}
+
+/* Pagination */
+.products-pagination .page-link {
+    width: 40px;
+    height: 40px;
+    color: #393b6a;
+}
+
+.products-pagination .page-link.active {
+    background-color: #393b6a;
+    color: white;
+}
+
+/* Product Details Page */
+.product-details-section {
+    padding: 80px 0;
+}
+
+.product-details-image-wrapper {
+    background: #f8f9fa;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+}
+
+.product-details-image {
+    object-fit: cover;
+    min-height: 400px;
+}
+
+.product-details-badge {
+    background-color: #ebecf0;
+    color: #484a7d;
+    font-size: 14px;
+    padding: 8px 16px;
+}
+
+.product-details-title {
+    color: #484a7d;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.product-details-price {
+    color: #393b6a;
+    font-weight: 700;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+.product-details-description {
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+.product-details-actions .contact-btn {
+    width: auto;
+    padding: 12px 40px;
+    border: none;
+    cursor: pointer;
+}
+
+.product-details-actions .btn-outline-secondary {
+    border-radius: 5px;
+    padding: 0 25px;
+}
