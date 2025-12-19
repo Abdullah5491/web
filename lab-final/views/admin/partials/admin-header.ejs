@@ -1,0 +1,26 @@
+<header class="admin-header">
+    <div>
+        <button id="sidebar-toggle" class="btn btn-secondary btn-sm" style="display: none;">
+            <i class="fas fa-bars"></i>
+        </button>
+        <h1>
+            <%= title || 'Admin Panel' %>
+        </h1>
+    </div>
+
+    <div class="admin-header-actions">
+        <div class="admin-user-info">
+            <i class="fas fa-user-circle" style="font-size: 1.5rem;"></i>
+            <span>Admin</span>
+        </div>
+    </div>
+</header>
+
+<style>
+    @media (max-width: 768px) {
+        #sidebar-toggle {
+            display: inline-flex !important;
+            margin-right: 1rem;
+        }
+    }
+</style>

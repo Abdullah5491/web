@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title || 'Admin Dashboard' %> - E-Commerce Admin
+    </title>
+
+    <!-- Admin Styles -->
+    <link rel="stylesheet" href="/css/admin.css">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="admin-page">
+    <div class="admin-wrapper">
+        <%- include('partials/admin-sidebar') %>
+
+            <div class="admin-main">
+                <%- include('partials/admin-header') %>
+
+                    <main class="admin-content">
+                        <!-- Dashboard Stats -->
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-card-header">
+                                    <span class="stat-card-title">Total Products</span>
+                                    <div class="stat-card-icon primary">
+                                        <i class="fas fa-box"></i>
+                                    </div>
+                                </div>
+                                <div class="stat-card-value">
+                                    <%= totalProducts %>
+                                </div>
+                            </div>
+
+                            <div class="stat-card">
+                                <div class="stat-card-header">
+                                    <span class="stat-card-title">Categories</span>
+                                    <div class="stat-card-icon success">
+                                        <i class="fas fa-tags"></i>
+                                    </div>
+                                </div>
+                                <div class="stat-card-value">
+                                    <%= categories.length %>
+                                </div>
+                            </div>
+
+                            <div class="stat-card">
+                                <div class="stat-card-header">
+                                    <span class="stat-card-title">Recent Products</span>
+                                    <div class="stat-card-icon warning">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                </div>
+                                <div class="stat-card-value">
+                                    <%= recentProducts.length %>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Categories Breakdown -->
+                        <div class="admin-table-container mb-4">
+                            <div class="admin-table-header">
+                                <h3 class="admin-table-title">Products by Category</h3>
+                            </div>
+                            <table class="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>Category</th>
+                                        <th>Count</th>
+                                        <th>Percentage</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% categories.forEach(cat=> { %>
+                                        <tr>
+                                            <td><span class="badge badge-primary">
+                                                    <%= cat._id %>
+                                                </span></td>
+                                            <td>
+                                                <%= cat.count %>
+                                            </td>
+                                            <td>
+                                                <%= ((cat.count / totalProducts) * 100).toFixed(1) %>%
+                                            </td>
+                                        </tr>
+                                        <% }) %>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Recent Products -->
+                        <div class="admin-table-container">
+                            <div class="admin-table-header">
+                                <h3 class="admin-table-title">Recent Products</h3>
+                                <a href="/admin/products" class="btn btn-primary btn-sm">
+                                    View All <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                            <table class="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>Image</th>
+                                        <th>Name</th>
+                                        <th>Category</th>
+                                        <th>Price</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% recentProducts.forEach(product=> { %>
+                                        <tr>
+                                            <td>
+                                                <img src="<%= product.image %>" alt="<%= product.name %>"
+                                                    class="product-image-thumb">
+                                            </td>
+                                            <td>
+                                                <%= product.name %>
+                                            </td>
+                                            <td><span class="badge badge-primary">
+                                                    <%= product.category %>
+                                                </span></td>
+                                            <td>$<%= product.price %>
+                                            </td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <a href="/admin/products/<%= product._id %>/edit"
+                                                        class="btn btn-primary btn-sm">
+                                                        <i class="fas fa-edit"></i>
+                                                    </a>
+                                                    <form method="POST"
+                                                        action="/admin/products/<%= product._id %>/delete"
+                                                        style="display: inline;">
+                                                        <button type="submit" class="btn btn-danger btn-sm btn-delete">
+                                                            <i class="fas fa-trash"></i>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <% }) %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </main>
+
+                    <%- include('partials/admin-footer') %>
+            </div>
+    </div>
+
+    <!-- Admin Scripts -->
+    <script src="/js/admin.js"></script>
+</body>
+
+</html>

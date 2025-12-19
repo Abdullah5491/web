@@ -1,0 +1,208 @@
+/* Checkout Page Styles - BeCopywriter Theme */
+
+/* Section Titles */
+.checkout-section-title {
+    color: #484a7d;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Form Sections */
+.checkout-form-section {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Form Controls */
+.checkout-form-section .form-control,
+.checkout-form-section .form-select {
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 0.75rem 1rem;
+    font-family: 'Raleway', sans-serif;
+}
+
+.checkout-form-section .form-control:focus,
+.checkout-form-section .form-select:focus {
+    border-color: #484a7d;
+    box-shadow: 0 0 0 0.2rem rgba(72, 74, 125, 0.15);
+}
+
+.checkout-form-section .form-label {
+    color: #484a7d;
+    font-weight: 600;
+    font-family: 'Raleway', sans-serif;
+    margin-bottom: 0.5rem;
+}
+
+/* Payment Options */
+.payment-option {
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.payment-option:hover {
+    border-color: #484a7d;
+    background-color: #f8f9fa;
+}
+
+.payment-option input[type="radio"]:checked+label {
+    color: #484a7d;
+}
+
+.payment-option label {
+    cursor: pointer;
+    margin: 0;
+    color: #666;
+    font-family: 'Raleway', sans-serif;
+}
+
+.payment-option i {
+    color: #484a7d;
+}
+
+/* Card Details */
+.card-details {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.card-details.show {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Order Summary */
+.order-summary-sticky {
+    position: sticky;
+    top: 20px;
+}
+
+.checkout-order-summary {
+    background: #fafafa;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.checkout-order-summary .checkout-section-title {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Product Items in Summary */
+.product-item {
+    padding: 1rem 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.product-item:last-child {
+    border-bottom: none;
+}
+
+.product-item h6 {
+    color: #484a7d;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+}
+
+.product-item .product-price strong {
+    color: #393b6a;
+    font-family: 'Raleway', sans-serif;
+}
+
+/* Totals */
+.checkout-total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    margin-top: 1rem;
+    border-top: 2px solid #484a7d;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #393b6a;
+    font-family: 'Raleway', sans-serif;
+}
+
+/* Empty Cart Message */
+.empty-cart-msg {
+    color: #999;
+    font-style: italic;
+}
+
+/* Coupon Input */
+.checkout-order-summary .input-group .form-control {
+    border-right: none;
+}
+
+.checkout-order-summary .input-group .btn-outline-primary {
+    border-color: #484a7d;
+    color: #484a7d;
+}
+
+.checkout-order-summary .input-group .btn-outline-primary:hover {
+    background-color: #484a7d;
+    color: white;
+}
+
+/* Terms Checkbox */
+.form-check-label a {
+    color: #484a7d;
+    font-weight: 600;
+}
+
+.form-check-label a:hover {
+    color: #393b6a;
+}
+
+/* Place Order Button */
+#placeOrderBtn {
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
+}
+
+#placeOrderBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Place Order Button in Order Summary */
+.checkout-order-summary #placeOrderBtn {
+    border: 2px solid #484a7d;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    max-width: 300px;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .order-summary-sticky {
+        position: relative;
+        top: 0;
+    }
+
+    .checkout-form-section {
+        padding: 1.5rem;
+    }
+}

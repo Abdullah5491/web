@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title || 'Add Product' %> - E-Commerce Admin
+    </title>
+
+    <!-- Admin Styles -->
+    <link rel="stylesheet" href="/css/admin.css">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="admin-page">
+    <div class="admin-wrapper">
+        <%- include('partials/admin-sidebar') %>
+
+            <div class="admin-main">
+                <%- include('partials/admin-header') %>
+
+                    <main class="admin-content">
+                        <div class="admin-form-container">
+                            <h2 style="margin-bottom: 1.5rem; color: var(--admin-dark);">
+                                <i class="fas fa-plus-circle"></i> Add New Product
+                            </h2>
+
+                            <!-- Error Messages -->
+                            <% if (errors && errors.length> 0) { %>
+                                <div class="form-error">
+                                    <strong><i class="fas fa-exclamation-triangle"></i> Please fix the following
+                                        errors:</strong>
+                                    <ul>
+                                        <% errors.forEach(error=> { %>
+                                            <li>
+                                                <%= error %>
+                                            </li>
+                                            <% }) %>
+                                    </ul>
+                                </div>
+                                <% } %>
+
+                                    <form method="POST" action="/admin/products" id="product-form"
+                                        enctype="multipart/form-data">
+                                        <div class="form-group">
+                                            <label for="name" class="form-label">
+                                                Product Name <span style="color: var(--admin-danger);">*</span>
+                                            </label>
+                                            <input type="text" id="name" name="name" class="form-control"
+                                                placeholder="Enter product name"
+                                                value="<%= typeof formData !== 'undefined' ? formData.name : '' %>"
+                                                required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="price" class="form-label">
+                                                Price ($) <span style="color: var(--admin-danger);">*</span>
+                                            </label>
+                                            <input type="number" id="price" name="price" class="form-control"
+                                                placeholder="0.00" step="0.01" min="0"
+                                                value="<%= typeof formData !== 'undefined' ? formData.price : '' %>"
+                                                required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="category" class="form-label">
+                                                Category <span style="color: var(--admin-danger);">*</span>
+                                            </label>
+                                            <input type="text" id="category" name="category" class="form-control"
+                                                placeholder="e.g., Creative, Marketing, Technical"
+                                                value="<%= typeof formData !== 'undefined' ? formData.category : '' %>"
+                                                required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="image" class="form-label">
+                                                Product Image
+                                            </label>
+                                            <input type="file" id="image" name="image" class="form-control"
+                                                accept="image/*">
+                                            <small
+                                                style="color: var(--admin-text-light); margin-top: 0.25rem; display: block;">
+                                                Upload product image (JPG, PNG, GIF, or WebP, max 5MB)
+                                            </small>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="description" class="form-label">
+                                                Description <span style="color: var(--admin-danger);">*</span>
+                                            </label>
+                                            <textarea id="description" name="description" class="form-control"
+                                                placeholder="Enter product description"
+                                                required><%= typeof formData !== 'undefined' ? formData.description : '' %></textarea>
+                                        </div>
+
+                                        <div class="btn-group" style="margin-top: 2rem;">
+                                            <button type="submit" class="btn btn-success">
+                                                <i class="fas fa-check"></i> Create Product
+                                            </button>
+                                            <a href="/admin/products" class="btn btn-secondary">
+                                                <i class="fas fa-times"></i> Cancel
+                                            </a>
+                                        </div>
+                                    </form>
+                        </div>
+                    </main>
+
+                    <%- include('partials/admin-footer') %>
+            </div>
+    </div>
+
+    <!-- Admin Scripts -->
+    <script src="/js/admin.js"></script>
+</body>
+
+</html>

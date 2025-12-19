@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title || 'Manage Products' %> - E-Commerce Admin
+    </title>
+
+    <!-- Admin Styles -->
+    <link rel="stylesheet" href="/css/admin.css">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="admin-page">
+    <div class="admin-wrapper">
+        <%- include('partials/admin-sidebar') %>
+
+            <div class="admin-main">
+                <%- include('partials/admin-header') %>
+
+                    <main class="admin-content">
+                        <!-- Success/Error Messages -->
+                        <% if (typeof success !=='undefined' && success) { %>
+                            <div class="alert alert-success">
+                                <i class="fas fa-check-circle"></i>
+                                <%= success %>
+                            </div>
+                            <% } %>
+
+                                <% if (typeof error !=='undefined' && error) { %>
+                                    <div class="alert alert-error">
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        <%= error %>
+                                    </div>
+                                    <% } %>
+
+                                        <!-- Products Table -->
+                                        <div class="admin-table-container">
+                                            <div class="admin-table-header">
+                                                <h3 class="admin-table-title">All Products (<%= products.length %>)</h3>
+                                                <div class="admin-table-actions">
+                                                    <form method="GET" action="/admin/products"
+                                                        style="display: inline;">
+                                                        <input type="text" name="search"
+                                                            placeholder="Search products..." class="admin-search"
+                                                            value="<%= search %>">
+                                                    </form>
+                                                    <a href="/admin/products/add" class="btn btn-success">
+                                                        <i class="fas fa-plus"></i> Add Product
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            <% if (products.length> 0) { %>
+                                                <table class="admin-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Image</th>
+                                                            <th>Name</th>
+                                                            <th>Category</th>
+                                                            <th>Price</th>
+                                                            <th>Description</th>
+                                                            <th>Actions</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <% products.forEach(product=> { %>
+                                                            <tr>
+                                                                <td>
+                                                                    <img src="<%= product.image %>"
+                                                                        alt="<%= product.name %>"
+                                                                        class="product-image-thumb">
+                                                                </td>
+                                                                <td><strong>
+                                                                        <%= product.name %>
+                                                                    </strong></td>
+                                                                <td><span class="badge badge-primary">
+                                                                        <%= product.category %>
+                                                                    </span></td>
+                                                                <td><strong>$<%= product.price %></strong></td>
+                                                                <td>
+                                                                    <%= product.description.substring(0, 50) %>...
+                                                                </td>
+                                                                <td>
+                                                                    <div class="btn-group">
+                                                                        <a href="/admin/products/<%= product._id %>/edit"
+                                                                            class="btn btn-primary btn-sm">
+                                                                            <i class="fas fa-edit"></i> Edit
+                                                                        </a>
+                                                                        <form method="POST"
+                                                                            action="/admin/products/<%= product._id %>/delete"
+                                                                            style="display: inline;">
+                                                                            <button type="submit"
+                                                                                class="btn btn-danger btn-sm btn-delete">
+                                                                                <i class="fas fa-trash"></i> Delete
+                                                                            </button>
+                                                                        </form>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <% }) %>
+                                                    </tbody>
+                                                </table>
+
+                                                <!-- Pagination -->
+                                                <% if (totalPages> 1) { %>
+                                                    <div class="pagination">
+                                                        <% if (currentPage> 1) { %>
+                                                            <a
+                                                                href="/admin/products?page=<%= currentPage - 1 %>&search=<%= search %>">
+                                                                <i class="fas fa-chevron-left"></i> Previous
+                                                            </a>
+                                                            <% } %>
+
+                                                                <% for (let i=1; i <=totalPages; i++) { %>
+                                                                    <% if (i===currentPage) { %>
+                                                                        <span class="active">
+                                                                            <%= i %>
+                                                                        </span>
+                                                                        <% } else { %>
+                                                                            <a
+                                                                                href="/admin/products?page=<%= i %>&search=<%= search %>">
+                                                                                <%= i %>
+                                                                            </a>
+                                                                            <% } %>
+                                                                                <% } %>
+
+                                                                                    <% if (currentPage < totalPages) {
+                                                                                        %>
+                                                                                        <a
+                                                                                            href="/admin/products?page=<%= currentPage + 1 %>&search=<%= search %>">
+                                                                                            Next <i
+                                                                                                class="fas fa-chevron-right"></i>
+                                                                                        </a>
+                                                                                        <% } %>
+                                                    </div>
+                                                    <% } %>
+                                                        <% } else { %>
+                                                            <div
+                                                                style="padding: 3rem; text-align: center; color: #6b7280;">
+                                                                <i class="fas fa-inbox"
+                                                                    style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.3;"></i>
+                                                                <p style="font-size: 1.1rem;">No products found</p>
+                                                                <a href="/admin/products/add"
+                                                                    class="btn btn-primary mt-2">
+                                                                    <i class="fas fa-plus"></i> Add Your First Product
+                                                                </a>
+                                                            </div>
+                                                            <% } %>
+                                        </div>
+                    </main>
+
+                    <%- include('partials/admin-footer') %>
+            </div>
+    </div>
+
+    <!-- Admin Scripts -->
+    <script src="/js/admin.js"></script>
+</body>
+
+</html>
